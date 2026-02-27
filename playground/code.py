@@ -9,6 +9,7 @@ display = tm1637lib.Grove4DigitDisplay(board.D9, board.D10)  # nRF52840 D9, D10,
 scd30 = adafruit_scd30.SCD30(i2c)
 
 while True:
+    print('loop')
     if scd30.data_available:
         msg = f'CO2 {round(scd30.CO2)}PPnm    tTEnmP {round(scd30.temperature)}C    rH {round(scd30.relative_humidity)}ö/o'
         # Plus 4 für 3 leerzeichen am Start und 1 damit am schluss 4 leere angezeigt werden
