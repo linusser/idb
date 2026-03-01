@@ -2,13 +2,9 @@ import board
 import tm1637lib
 import time
 
-from sensor import Measurement
-
 class Display:
     def __init__(self):
         self.display = tm1637lib.Grove4DigitDisplay(board.D9, board.D10)  # nRF52840 D9, D10, Grove D4
-        self.display.set_colon(False)
-
 
     def display_raw_text(self, msg):
         # Plus 4 für 3 leerzeichen am Start und 1 damit am schluss 4 leere angezeigt werden
@@ -17,7 +13,7 @@ class Display:
 
         for i in range(len_msg):
             self.display.show(msg[i:i + 4])
-            time.sleep(0.33)
+            time.sleep(0.4)
 
     def display_measurement(self, measurement):
         co2, temp, rh = measurement.rounded()
@@ -30,7 +26,7 @@ class Display:
             self.display_raw_text(msg)
             time.sleep(5)
 
-    def display_network_error(self):
+    def display_sensor_error(self):
         msg = 'Error no SEnSor DAtTA'
         for i in range(3):
             self.display_raw_text(msg)
