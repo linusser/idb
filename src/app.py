@@ -8,8 +8,6 @@ from network import Network
 logger = logging.getLogger("main")
 logger.setLevel(logging.INFO)
 
-logger = logging.getLogger("main")
-
 DISPLAY_PERIOD = 30.0
 MEASURE_PERIOD = 60.0
 PUBLISH_PERIOD = 60.0
